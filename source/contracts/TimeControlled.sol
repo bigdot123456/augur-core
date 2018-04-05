@@ -16,6 +16,7 @@ contract TimeControlled is ITime, Ownable {
         // This is to confirm we are not on foundation network
         require(!FOUNDATION_REP_ADDRESS.exists());
         timestamp = block.timestamp;
+        controller.getAugur().logTimestampSet(timestamp);
     }
 
     function getTimestamp() external view returns (uint256) {
